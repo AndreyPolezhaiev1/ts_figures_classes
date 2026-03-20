@@ -1,4 +1,4 @@
-type Color = ['red', 'green', 'blue'];
+type Color = 'red' | 'green' | 'blue';
 type Shape = 'triangle' | 'circle' | 'rectangle';
 
 export interface Figure {
@@ -17,12 +17,13 @@ export class Triangle implements Figure {
     public c: number,
   ) {
     if (a <= 0 || b <= 0 || c <= 0) {
-      throw new Error('Triangle params are less than 0');
+      throw new Error('Sides of a triangle must be positive numbers');
     }
 
     if (a + b <= c || a + c <= b || b + c <= a) {
       throw new Error(
-        'The longest side of a triangle is <= than a sum of two others',
+        `The sum of the lengths of any two sides of a triangle 
+         must be greater than the length of the third side`,
       );
     }
   }
